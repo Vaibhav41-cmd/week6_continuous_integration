@@ -70,7 +70,7 @@ def main() -> int:
     )
     expect(len(combinations) == 7, "matrix contains seven combinations", failures)
     expect(
-        ("ubuntu-latest", "3.9") in combinations,
+        ("ubuntu-24.04", "3.9") in combinations,
         "oldest supported Python is tested on Ubuntu",
         failures,
     )
