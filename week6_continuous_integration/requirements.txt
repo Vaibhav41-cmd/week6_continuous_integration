@@ -1,0 +1,2 @@
+# FinanceKit has no runtime third-party dependencies.
+# It supports Python 3.9+ using only the standard library.

@@ -1,0 +1,265 @@
+{
+  "generated_utc": "2026-11-02T15:36:24+00:00",
+  "project": "financekit",
+  "version": "1.1.0",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.1.158+-x86_64-with-glibc2.41",
+    "pytest": "9.0.3",
+    "pytest_cov": "7.1.0",
+    "ruff": "0.17.3",
+    "build": "1.6.1",
+    "twine": "7.0.0"
+  },
+  "workflow": {
+    "name": "CI",
+    "triggers": [
+      "pull_request",
+      "push",
+      "schedule",
+      "workflow_dispatch"
+    ],
+    "job_definitions": [
+      "build",
+      "coverage",
+      "lint",
+      "release",
+      "test"
+    ],
+    "matrix_combinations": [
+      {
+        "os": "ubuntu-latest",
+        "python": "3.9"
+      },
+      {
+        "os": "ubuntu-latest",
+        "python": "3.10"
+      },
+      {
+        "os": "ubuntu-latest",
+        "python": "3.11"
+      },
+      {
+        "os": "ubuntu-latest",
+        "python": "3.12"
+      },
+      {
+        "os": "ubuntu-latest",
+        "python": "3.13"
+      },
+      {
+        "os": "windows-latest",
+        "python": "3.13"
+      },
+      {
+        "os": "macos-latest",
+        "python": "3.13"
+      }
+    ],
+    "normal_push_job_instances": 10,
+    "actions": [
+      "actions/checkout@v4",
+      "actions/download-artifact@v4",
+      "actions/setup-python@v5",
+      "actions/upload-artifact@v4"
+    ]
+  },
+  "tests": {
+    "collected_files": {
+      "tests/test_coverage_driven.py": 11,
+      "tests/test_interest.py": 29,
+      "tests/test_investments.py": 32,
+      "tests/test_io.py": 6,
+      "tests/test_loans.py": 18,
+      "tests/test_reports_integration.py": 8,
+      "tests/test_statistics.py": 25
+    },
+    "total": 129,
+    "markers": {
+      "unit": 104,
+      "integration": 14,
+      "edge": 58
+    },
+    "junit": {
+      "tests": 129,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.128
+    }
+  },
+  "coverage": {
+    "overall_branch_percent": 98.44,
+    "gate_percent": 95,
+    "module_combined_coverage_percent": {
+      "__init__.py": 100.0,
+      "errors.py": 100.0,
+      "interest.py": 100.0,
+      "investments.py": 91.78,
+      "io.py": 100.0,
+      "loans.py": 100.0,
+      "reports.py": 100.0,
+      "statistics.py": 100.0,
+      "validation.py": 100.0
+    }
+  },
+  "local_ci": {
+    "status": "passed",
+    "stages": [
+      {
+        "name": "Workflow structure validation",
+        "command": [
+          "python",
+          "scripts/validate_workflow.py"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.048,
+        "log": "<local-ci-output>/logs/01-workflow-structure-validation.txt"
+      },
+      {
+        "name": "Ruff lint",
+        "command": [
+          "python",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.035,
+        "log": "<local-ci-output>/logs/02-ruff-lint.txt"
+      },
+      {
+        "name": "Ruff format check",
+        "command": [
+          "python",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.033,
+        "log": "<local-ci-output>/logs/03-ruff-format-check.txt"
+      },
+      {
+        "name": "Byte-compile sources",
+        "command": [
+          "python",
+          "-m",
+          "compileall",
+          "-q",
+          "financekit",
+          "tests",
+          "examples",
+          "scripts",
+          "tools"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.051,
+        "log": "<local-ci-output>/logs/04-byte-compile-sources.txt"
+      },
+      {
+        "name": "Pytest with JUnit report",
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "-vv",
+          "--junitxml=<local-ci-output>/test-results/junit-local.xml"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.426,
+        "log": "<local-ci-output>/logs/05-pytest-with-junit-report.txt"
+      },
+      {
+        "name": "Coverage quality gate",
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "-vv",
+          "--cov=financekit",
+          "--cov-branch",
+          "--cov-fail-under=95",
+          "--cov-report=term-missing",
+          "--cov-report=xml:<local-ci-output>/coverage.xml",
+          "--cov-report=html:<local-ci-output>/htmlcov",
+          "--junitxml=<local-ci-output>/test-results/junit-coverage.xml"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.791,
+        "log": "<local-ci-output>/logs/06-coverage-quality-gate.txt"
+      },
+      {
+        "name": "Build source distribution and wheel",
+        "command": [
+          "python",
+          "-m",
+          "build",
+          "--outdir",
+          "<local-ci-output>/dist"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 2.591,
+        "log": "<local-ci-output>/logs/07-build-source-distribution-and-wheel.txt"
+      },
+      {
+        "name": "Validate distribution metadata",
+        "command": [
+          "python",
+          "-m",
+          "twine",
+          "check",
+          "<local-ci-output>/dist/financekit-1.1.0-py3-none-any.whl",
+          "<local-ci-output>/dist/financekit-1.1.0.tar.gz"
+        ],
+        "return_code": 0,
+        "status": "passed",
+        "duration_seconds": 0.273,
+        "log": "<local-ci-output>/logs/08-validate-distribution-metadata.txt"
+      }
+    ],
+    "total_stage_seconds": 4.248
+  },
+  "negative_experiment": {
+    "exit_code": 1,
+    "junit": {
+      "tests": 130,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.204
+    },
+    "expected": "non-zero"
+  },
+  "distributions": [
+    {
+      "name": "financekit-1.1.0-py3-none-any.whl",
+      "bytes": 17340
+    },
+    {
+      "name": "financekit-1.1.0.tar.gz",
+      "bytes": 24879
+    }
+  ],
+  "nonblank_python_loc": {
+    "financekit": 590,
+    "tests": 530,
+    "scripts": 356,
+    "tools": 776,
+    "examples": 47
+  },
+  "hosted_verification": {
+    "status": "pending first push to intern GitHub repository",
+    "local_equivalent": "passed"
+  }
+}

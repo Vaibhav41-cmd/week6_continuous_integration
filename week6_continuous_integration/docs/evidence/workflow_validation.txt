@@ -1,0 +1,32 @@
+$ python scripts/validate_workflow.py
+PASS  workflow is named CI
+PASS  push trigger is enabled
+PASS  pull_request trigger is enabled
+PASS  manual trigger is enabled
+PASS  weekly scheduled trigger is enabled
+PASS  default token permission is read-only
+PASS  job exists: lint
+PASS  job exists: test
+PASS  job exists: coverage
+PASS  job exists: build
+PASS  job exists: release
+PASS  lint job runs Ruff check
+PASS  lint job checks formatting
+PASS  lint job validates workflow semantics
+PASS  matrix uses fail-fast: false
+PASS  matrix contains seven combinations
+PASS  oldest supported Python is tested on Ubuntu
+PASS  current Python is tested on Windows
+PASS  current Python is tested on macOS
+PASS  test job runs pytest
+PASS  test job creates a JUnit report
+PASS  test artifact uploads even when tests fail
+PASS  coverage job enforces the 95% gate
+PASS  coverage uses branch measurement
+PASS  build waits for the coverage gate
+PASS  build job builds distributions
+PASS  build job validates distribution metadata with twine
+PASS  release job is restricted to version tags
+PASS  write permission is scoped to the release job
+
+Workflow validation passed.

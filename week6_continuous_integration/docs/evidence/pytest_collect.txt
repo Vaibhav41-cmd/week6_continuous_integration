@@ -1,0 +1,31 @@
+$ python -m pytest --collect-only -q
+tests/test_coverage_driven.py: 11
+tests/test_interest.py: 29
+tests/test_investments.py: 32
+tests/test_io.py: 6
+tests/test_loans.py: 18
+tests/test_reports_integration.py: 8
+tests/test_statistics.py: 25
+
+
+$ python -m pytest --collect-only -q -m unit
+tests/test_interest.py: 29
+tests/test_investments.py: 32
+tests/test_loans.py: 18
+tests/test_statistics.py: 25
+
+
+$ python -m pytest --collect-only -q -m integration
+tests/test_io.py: 6
+tests/test_reports_integration.py: 8
+
+
+$ python -m pytest --collect-only -q -m edge
+tests/test_coverage_driven.py: 11
+tests/test_interest.py: 11
+tests/test_investments.py: 14
+tests/test_io.py: 3
+tests/test_loans.py: 7
+tests/test_reports_integration.py: 1
+tests/test_statistics.py: 11
+

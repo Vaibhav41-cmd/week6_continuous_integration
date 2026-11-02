@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financekit"
+version = "1.1.0"
+description = "A dependency-free personal-finance mathematics library with a production-style CI pipeline"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Vaibhav Desale" }]
+keywords = ["finance", "continuous-integration", "github-actions", "pytest", "coverage"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Testing",
+]
+
+[project.urls]
+Homepage = "https://github.com/Vaibhav41-cmd/week6_continuous_integration"
+Repository = "https://github.com/Vaibhav41-cmd/week6_continuous_integration"
+Issues = "https://github.com/Vaibhav41-cmd/week6_continuous_integration/issues"
+
+[tool.setuptools]
+packages = ["financekit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "unit: isolated single-function tests",
+    "integration: tests that combine multiple modules or real file I/O",
+    "edge: boundary and error-condition tests",
+]
+
+[tool.coverage.run]
+source = ["financekit"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 95
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+extend-exclude = ["docs/evidence", "htmlcov", "dist", "build", ".eggs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"examples/demo.py" = ["EXE001", "E402"]
+"tests/*.py" = ["B011"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

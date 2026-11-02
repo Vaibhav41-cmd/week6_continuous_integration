@@ -1,0 +1,108 @@
+LOCAL GIT TRIGGER SIMULATION
+This proves the clean tree can be committed and that the new commit passes
+the local equivalent of the hosted quality gates. On GitHub, `git push` is
+the webhook/event that starts the same workflow on hosted runners.
+
+$ git init -b main
+Initialized empty Git repository in <temp-git-repo>/.git/
+$ git config user.name Week 6 Evidence
+
+$ git config user.email week6-evidence@example.com
+
+$ git add .
+
+$ git commit -m chore: import CI-ready FinanceKit project
+[main (root-commit) de0583d] chore: import CI-ready FinanceKit project
+ 65 files changed, 6820 insertions(+)
+ create mode 100644 .github/dependabot.yml
+ create mode 100644 .github/workflows/ci.yml
+ create mode 100644 .gitignore
+ create mode 100644 LICENSE
+ create mode 100644 Makefile
+ create mode 100644 README.md
+ create mode 100644 SUBMISSION_DESCRIPTION.md
+ create mode 100644 data/sample_cashflows.csv
+ create mode 100644 docs/CI_PIPELINE.md
+ create mode 100644 docs/EVIDENCE_INDEX.md
+ create mode 100644 docs/GITHUB_UPLOAD_GUIDE.md
+ create mode 100644 docs/TESTING.md
+ create mode 100644 docs/WORK_LOG.md
+ create mode 100644 docs/evidence/build_and_twine.txt
+ create mode 100644 docs/evidence/ci_stage_timings.csv
+ create mode 100644 docs/evidence/coverage.txt
+ create mode 100644 docs/evidence/coverage.xml
+ create mode 100644 docs/evidence/demo_output.txt
+ create mode 100644 docs/evidence/environment.txt
+ create mode 100644 docs/evidence/figures/fig01_ci_pipeline.png
+ create mode 100644 docs/evidence/figures/fig02_tests_and_coverage.png
+ create mode 100644 docs/evidence/figures/fig03_test_matrix.png
+ create mode 100644 docs/evidence/figures/fig04_local_ci_pass.png
+ create mode 100644 docs/evidence/figures/fig05_negative_ci.png
+ create mode 100644 docs/evidence/figures/fig06_stage_durations.png
+ create mode 100644 docs/evidence/git_trigger_simulation.txt
+ create mode 100644 docs/evidence/junit-local.xml
+ create mode 100644 docs/evidence/local_ci_positive.txt
+ create mode 100644 docs/evidence/local_ci_summary.txt
+ create mode 100644 docs/evidence/negative_ci.txt
+ create mode 100644 docs/evidence/pytest_collect.txt
+ create mode 100644 docs/evidence/pytest_full.txt
+ create mode 100644 docs/evidence/ruff_format.txt
+ create mode 100644 docs/evidence/ruff_lint.txt
+ create mode 100644 docs/evidence/verification_summary.txt
+ create mode 100644 docs/evidence/workflow_validation.txt
+ create mode 100755 examples/demo.py
+ create mode 100644 financekit/__init__.py
+ create mode 100644 financekit/errors.py
+ create mode 100644 financekit/interest.py
+ create mode 100644 financekit/investments.py
+ create mode 100644 financekit/io.py
+ create mode 100644 financekit/loans.py
+ create mode 100644 financekit/reports.py
+ create mode 100644 financekit/statistics.py
+ create mode 100644 financekit/validation.py
+ create mode 100644 pyproject.toml
+ create mode 100644 requirements-ci.txt
+ create mode 100644 requirements-dev.txt
+ create mode 100644 requirements-evidence.txt
+ create mode 100644 requirements.txt
+ create mode 100644 results/ci_summary.json
+ create mode 100644 scripts/run_ci_locally.ps1
+ create mode 100755 scripts/run_ci_locally.py
+ create mode 100755 scripts/run_ci_locally.sh
+ create mode 100755 scripts/validate_workflow.py
+ create mode 100644 tests/conftest.py
+ create mode 100644 tests/test_coverage_driven.py
+ create mode 100644 tests/test_interest.py
+ create mode 100644 tests/test_investments.py
+ create mode 100644 tests/test_io.py
+ create mode 100644 tests/test_loans.py
+ create mode 100644 tests/test_reports_integration.py
+ create mode 100644 tests/test_statistics.py
+ create mode 100755 tools/generate_evidence.py
+
+$ git add CI_TRIGGER_NOTE.md
+
+
+$ git commit -m docs: verify CI trigger
+[main 23292d2] docs: verify CI trigger
+ 1 file changed, 1 insertion(+)
+ create mode 100644 CI_TRIGGER_NOTE.md
+
+$ git log --oneline -2
+23292d2 docs: verify CI trigger
+de0583d chore: import CI-ready FinanceKit project
+
+$ git show --stat --oneline HEAD
+23292d2 docs: verify CI trigger
+ CI_TRIGGER_NOTE.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+$ python scripts/run_ci_locally.py --skip-build --output-dir <git-trigger-output>
+- PASSED Workflow structure validation
+- PASSED Ruff lint
+- PASSED Ruff format check
+- PASSED Byte-compile sources
+- PASSED Pytest with JUnit report
+- PASSED Coverage quality gate
+Overall: passed
+Post-commit local CI exit code: 0

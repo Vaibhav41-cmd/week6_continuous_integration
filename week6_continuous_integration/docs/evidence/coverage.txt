@@ -1,0 +1,161 @@
+$ python -m pytest -vv --cov=financekit --cov-branch --cov-fail-under=95 --cov-report=term-missing --cov-report=xml:<local-ci-output>/coverage.xml --cov-report=html:<local-ci-output>/htmlcov --junitxml=<local-ci-output>/test-results/junit-coverage.xml
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.0.3, pluggy-1.7.0 -- python
+cachedir: .pytest_cache
+rootdir: <repo>
+configfile: pyproject.toml
+testpaths: tests
+plugins: platformdirs-4.13.5, cov-7.1.0, anyio-4.15.1
+collecting ... collected 129 items
+
+tests/test_coverage_driven.py::test_irr_above_one_hundred_percent_widens_the_bracket PASSED [  0%]
+tests/test_coverage_driven.py::test_irr_exactly_one_hundred_percent PASSED [  1%]
+tests/test_coverage_driven.py::test_investment_report_for_a_project_that_never_pays_back PASSED [  2%]
+tests/test_coverage_driven.py::test_load_cashflows_rejects_structurally_bad_files[-empty] PASSED [  3%]
+tests/test_coverage_driven.py::test_load_cashflows_rejects_structurally_bad_files[cashflow\n10,20\n-expected one value] PASSED [  3%]
+tests/test_coverage_driven.py::test_load_cashflows_rejects_structurally_bad_files[cashflow\nnan\n-not a finite number] PASSED [  4%]
+tests/test_coverage_driven.py::test_load_cashflows_rejects_structurally_bad_files[cashflow\ninf\n-not a finite number] PASSED [  5%]
+tests/test_coverage_driven.py::test_series_validation_rejects_non_sequences[123_0] PASSED [  6%]
+tests/test_coverage_driven.py::test_series_validation_rejects_non_sequences[123_1] PASSED [  6%]
+tests/test_coverage_driven.py::test_series_validation_rejects_non_sequences[None] PASSED [  7%]
+tests/test_coverage_driven.py::test_series_validation_rejects_non_sequences[123_2] PASSED [  8%]
+tests/test_interest.py::test_simple_interest[10000-5-2-1000.0] PASSED    [  9%]
+tests/test_interest.py::test_simple_interest[5000-6-3-900.0] PASSED      [ 10%]
+tests/test_interest.py::test_simple_interest[10000-0-5-0.0] PASSED       [ 10%]
+tests/test_interest.py::test_simple_interest[0-10-5-0.0] PASSED          [ 11%]
+tests/test_interest.py::test_simple_interest[10000-10-0-0.0] PASSED      [ 12%]
+tests/test_interest.py::test_simple_interest[1500-4.5-0.5-33.75] PASSED  [ 13%]
+tests/test_interest.py::test_compound_amount[10000-10-2-1-12100.0] PASSED [ 13%]
+tests/test_interest.py::test_compound_amount[10000-12-1-12-11268.250301319698] PASSED [ 14%]
+tests/test_interest.py::test_compound_amount[10000-0-10-12-10000.0] PASSED [ 15%]
+tests/test_interest.py::test_compound_amount[1000-100-1-1-2000.0] PASSED [ 16%]
+tests/test_interest.py::test_compound_interest_is_amount_minus_principal PASSED [ 17%]
+tests/test_interest.py::test_more_frequent_compounding_never_earns_less PASSED [ 17%]
+tests/test_interest.py::test_effective_annual_rate PASSED                [ 18%]
+tests/test_interest.py::test_present_and_future_value_are_inverses[10000-10-2-1] PASSED [ 19%]
+tests/test_interest.py::test_present_and_future_value_are_inverses[25000-7.5-4-12] PASSED [ 20%]
+tests/test_interest.py::test_present_and_future_value_are_inverses[1000-3-0.5-2] PASSED [ 20%]
+tests/test_interest.py::test_present_value_known_example PASSED          [ 21%]
+tests/test_interest.py::test_rule_of_72_and_exact_years_to_double PASSED [ 22%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>0] PASSED [ 23%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>1] PASSED [ 24%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>2] PASSED [ 24%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>3] PASSED [ 25%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>4] PASSED [ 26%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>5] PASSED [ 27%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>6] PASSED [ 27%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>7] PASSED [ 28%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>8] PASSED [ 29%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>9] PASSED [ 30%]
+tests/test_interest.py::test_interest_rejects_invalid_inputs[<lambda>10] PASSED [ 31%]
+tests/test_investments.py::test_npv[0.1-cashflows0--49.586776859504255] PASSED [ 31%]
+tests/test_investments.py::test_npv[0.0-cashflows1-100.0] PASSED         [ 32%]
+tests/test_investments.py::test_npv[0.25-cashflows2--2000.0] PASSED      [ 33%]
+tests/test_investments.py::test_npv[0.1-cashflows3-2276.4838467317777] PASSED [ 34%]
+tests/test_investments.py::test_irr[cashflows0-0.1] PASSED               [ 34%]
+tests/test_investments.py::test_irr[cashflows1-0.1] PASSED               [ 35%]
+tests/test_investments.py::test_irr[cashflows2-0.0] PASSED               [ 36%]
+tests/test_investments.py::test_irr[cashflows3-0.2164778541842899] PASSED [ 37%]
+tests/test_investments.py::test_irr_actually_zeroes_the_npv PASSED       [ 37%]
+tests/test_investments.py::test_irr_rejects_cashflows_without_a_root[cashflows0] PASSED [ 38%]
+tests/test_investments.py::test_irr_rejects_cashflows_without_a_root[cashflows1] PASSED [ 39%]
+tests/test_investments.py::test_irr_rejects_cashflows_without_a_root[cashflows2] PASSED [ 40%]
+tests/test_investments.py::test_irr_rejects_cashflows_without_a_root[cashflows3] PASSED [ 41%]
+tests/test_investments.py::test_cagr[100-121-2-0.1] PASSED               [ 41%]
+tests/test_investments.py::test_cagr[10000-14641-4-0.1] PASSED           [ 42%]
+tests/test_investments.py::test_cagr[1000-1000-5-0.0] PASSED             [ 43%]
+tests/test_investments.py::test_cagr[1000-500-1--0.5] PASSED             [ 44%]
+tests/test_investments.py::test_sip_future_value[1000-12-12-12682.503013196976] PASSED [ 44%]
+tests/test_investments.py::test_sip_future_value[5000-12-60-408348.3492820457] PASSED [ 45%]
+tests/test_investments.py::test_sip_future_value[2000-0-24-48000.0] PASSED [ 46%]
+tests/test_investments.py::test_sip_future_value[1000-12-1-1000.0] PASSED [ 47%]
+tests/test_investments.py::test_required_monthly_saving_is_the_inverse_of_sip PASSED [ 48%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>0] PASSED [ 48%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>1] PASSED [ 49%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>2] PASSED [ 50%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>3] PASSED [ 51%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>4] PASSED [ 51%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>5] PASSED [ 52%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>6] PASSED [ 53%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>7] PASSED [ 54%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>8] PASSED [ 55%]
+tests/test_investments.py::test_investments_reject_invalid_inputs[<lambda>9] PASSED [ 55%]
+tests/test_io.py::test_load_cashflows_happy_path PASSED                  [ 56%]
+tests/test_io.py::test_load_cashflows_tolerates_blank_lines_and_spaces PASSED [ 57%]
+tests/test_io.py::test_load_cashflows_reports_the_offending_line PASSED  [ 58%]
+tests/test_io.py::test_load_cashflows_rejects_a_wrong_header PASSED      [ 58%]
+tests/test_io.py::test_load_cashflows_missing_file_and_directory PASSED  [ 59%]
+tests/test_io.py::test_save_amortization_schedule_round_trip PASSED      [ 60%]
+tests/test_loans.py::test_monthly_payment[100000-12-12-8884.878867834166] PASSED [ 61%]
+tests/test_loans.py::test_monthly_payment[500000-9-60-10379.177613176937] PASSED [ 62%]
+tests/test_loans.py::test_monthly_payment[12000-0-12-1000.0] PASSED      [ 62%]
+tests/test_loans.py::test_monthly_payment[1000-12-1-1010.0] PASSED       [ 63%]
+tests/test_loans.py::test_monthly_payment[50000-0-1-50000.0] PASSED      [ 64%]
+tests/test_loans.py::test_schedule_shape_and_first_rows PASSED           [ 65%]
+tests/test_loans.py::test_schedule_fully_repay_the_loan PASSED           [ 65%]
+tests/test_loans.py::test_schedule_interest_share_declines_over_time PASSED [ 66%]
+tests/test_loans.py::test_zero_interest_schedule PASSED                  [ 67%]
+tests/test_loans.py::test_schedule_rows_are_immutable_and_serialisable PASSED [ 68%]
+tests/test_loans.py::test_loan_summary_is_internally_consistent PASSED   [ 68%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>0] PASSED  [ 69%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>1] PASSED  [ 70%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>2] PASSED  [ 71%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>3] PASSED  [ 72%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>4] PASSED  [ 72%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>5] PASSED  [ 73%]
+tests/test_loans.py::test_loans_reject_invalid_inputs[<lambda>6] PASSED  [ 74%]
+tests/test_reports_integration.py::test_package_public_api_and_version PASSED [ 75%]
+tests/test_reports_integration.py::test_build_loan_report_combines_payment_schedule_and_summary PASSED [ 75%]
+tests/test_reports_integration.py::test_build_investment_report_accepts_a_good_project PASSED [ 76%]
+tests/test_reports_integration.py::test_build_investment_report_rejects_a_bad_project PASSED [ 77%]
+tests/test_reports_integration.py::test_build_investment_report_without_an_irr PASSED [ 78%]
+tests/test_reports_integration.py::test_analyze_cashflow_file_end_to_end PASSED [ 79%]
+tests/test_reports_integration.py::test_full_user_journey PASSED         [ 79%]
+tests/test_reports_integration.py::test_reports_propagate_validation_errors PASSED [ 80%]
+tests/test_statistics.py::test_mean_return PASSED                        [ 81%]
+tests/test_statistics.py::test_variance_and_stdev_sample_vs_population PASSED [ 82%]
+tests/test_statistics.py::test_cumulative_return[returns0--0.01] PASSED  [ 82%]
+tests/test_statistics.py::test_cumulative_return[returns1-0.21] PASSED   [ 83%]
+tests/test_statistics.py::test_cumulative_return[returns2-0.0] PASSED    [ 84%]
+tests/test_statistics.py::test_cumulative_return[returns3-0.0] PASSED    [ 85%]
+tests/test_statistics.py::test_cumulative_return_fixture_series PASSED   [ 86%]
+tests/test_statistics.py::test_sharpe_ratio PASSED                       [ 86%]
+tests/test_statistics.py::test_sharpe_ratio_with_zero_volatility_is_undefined PASSED [ 87%]
+tests/test_statistics.py::test_max_drawdown[prices0-0.25] PASSED         [ 88%]
+tests/test_statistics.py::test_max_drawdown[prices1-0.0] PASSED          [ 89%]
+tests/test_statistics.py::test_max_drawdown[prices2-0.0] PASSED          [ 89%]
+tests/test_statistics.py::test_max_drawdown[prices3-0.5] PASSED          [ 90%]
+tests/test_statistics.py::test_max_drawdown[prices4-0.5] PASSED          [ 91%]
+tests/test_statistics.py::test_correlation_perfect_and_inverse PASSED    [ 92%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>0] PASSED [ 93%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>1] PASSED [ 93%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>2] PASSED [ 94%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>3] PASSED [ 95%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>4] PASSED [ 96%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>5] PASSED [ 96%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>6] PASSED [ 97%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>7] PASSED [ 98%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>8] PASSED [ 99%]
+tests/test_statistics.py::test_statistics_reject_invalid_inputs[<lambda>9] PASSED [100%]
+
+- generated xml file: <local-ci-output>/test-results/junit-coverage.xml -
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.16-final-0 _______________
+
+Name                        Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------
+financekit/__init__.py         10      0      0      0   100%
+financekit/errors.py            2      0      0      0   100%
+financekit/interest.py         34      0      0      0   100%
+financekit/investments.py      53      3     20      3    92%   53, 55, 68
+financekit/io.py               41      0     12      0   100%
+financekit/loans.py            46      0      6      0   100%
+financekit/reports.py          31      0      4      0   100%
+financekit/statistics.py       52      0     14      0   100%
+financekit/validation.py       42      0     18      0   100%
+-----------------------------------------------------------------------
+TOTAL                         311      3     74      3    98%
+Coverage HTML written to dir <local-ci-output>/htmlcov
+Coverage XML written to file <local-ci-output>/coverage.xml
+Required test coverage of 95% reached. Total coverage: 98.44%
+============================= 129 passed in 0.42s ==============================

@@ -1,0 +1,9 @@
+stage,return_code,status,duration_seconds
+"Workflow structure validation",0,passed,0.048
+"Ruff lint",0,passed,0.035
+"Ruff format check",0,passed,0.033
+"Byte-compile sources",0,passed,0.051
+"Pytest with JUnit report",0,passed,0.426
+"Coverage quality gate",0,passed,0.791
+"Build source distribution and wheel",0,passed,2.591
+"Validate distribution metadata",0,passed,0.273

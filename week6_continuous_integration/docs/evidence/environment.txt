@@ -1,0 +1,19 @@
+Week 6 CI evidence environment
+Generated (UTC): 2026-11-02T15:36:16+00:00
+Python: 3.13.16 (CPython)
+Platform: Linux-6.1.158+-x86_64-with-glibc2.41
+
+Tool versions:
+- pytest: 9.0.3
+- pytest-cov: 7.1.0
+- coverage: 7.17.0
+- ruff: 0.17.3
+- build: 1.6.1
+- twine: 7.0.0
+- PyYAML: 6.0.3
+
+Project gates:
+- Tests collected: 129
+- Branch coverage floor: 95%
+- Matrix: Ubuntu Python 3.9-3.13; Windows/macOS Python 3.13
+- Runtime dependencies: none

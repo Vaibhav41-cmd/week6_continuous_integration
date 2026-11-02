@@ -1,0 +1,22 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Generated at the repository root by local commands. The leading slash is
+# intentional: curated evidence such as docs/evidence/coverage.xml must remain
+# committable.
+/build/
+/dist/
+/htmlcov/
+/coverage.xml
+/.coverage
+/test-results/
+/local-ci-output/
+
+.DS_Store

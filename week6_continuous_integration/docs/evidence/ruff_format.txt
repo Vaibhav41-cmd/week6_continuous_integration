@@ -1,0 +1,2 @@
+$ python -m ruff format --check .
+28 files already formatted

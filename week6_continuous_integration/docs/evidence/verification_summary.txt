@@ -1,0 +1,14 @@
+Week 6 CI verification summary
+Generated: 2026-11-02T15:36:24+00:00
+
+Project: FinanceKit 1.1.0
+Tests: 129 in JUnit; failures=0, errors=0
+Markers: {'unit': 104, 'integration': 14, 'edge': 58}
+Coverage: 98.44% (gate 95%)
+Workflow job definitions: build, coverage, lint, release, test
+Matrix combinations: 7
+Normal push job instances: 10
+Local CI: passed in 4.248s of stage time
+Deliberate failure experiment exit: 1 (expected non-zero)
+Distributions: [{'name': 'financekit-1.1.0-py3-none-any.whl', 'bytes': 17340}, {'name': 'financekit-1.1.0.tar.gz', 'bytes': 24879}]
+Hosted GitHub run: pending first push by repository owner; local equivalent passed.

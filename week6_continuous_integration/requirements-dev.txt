@@ -1,0 +1,5 @@
+# Local development tools: tests, coverage, linting, formatting and builds.
+-r requirements-ci.txt
+ruff==0.17.3
+build==1.6.1
+twine==7.0.0

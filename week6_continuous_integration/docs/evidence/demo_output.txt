@@ -1,0 +1,21 @@
+$ python examples/demo.py
+financekit 1.1.0 demo
+------------------------------------------------------------
+Simple interest 10,000 @ 5% for 2y : 1000.0
+Compound amount 10,000 @12% monthly: 11268.25
+Years to double @ 8% (exact)      : 9.01 | rule of 72: 9.0
+
+Loan Rs.1,00,000 @12% x 12 months  : EMI 8884.88 | total interest 6618.53
+First instalment                  : {'month': 1, 'payment': 8884.88, 'principal': 7884.88, 'interest': 1000.0, 'balance': 92115.12}
+Last instalment                   : {'month': 12, 'payment': 8884.85, 'principal': 8796.88, 'interest': 87.97, 'balance': 0.0}
+
+Project in data/sample_cashflows.csv
+NPV @10%                          : 2276.48
+IRR                               : 21.65%
+Payback period                    : 3
+Recommendation                    : ACCEPT
+
+Monthly returns                   : [0.02, -0.01, 0.03, 0.005]
+Cumulative return                 : 4.53%
+Sharpe ratio                      : 0.643
+Max drawdown of demo prices       : 25%
